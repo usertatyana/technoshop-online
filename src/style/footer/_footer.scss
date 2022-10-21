@@ -32,7 +32,7 @@
     column-count: 2;
     }
 
-    &-contacts {
+    &_contacts {
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
@@ -40,12 +40,13 @@
     }
   }
 
-  &_item {
+  &__item {
     margin-bottom: 15px;
 
     &_contact {
       margin-bottom: 21px;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -53,14 +54,9 @@
 
   &__link {
     transition: color 0.36s ease-in-out;
+
     &:hover {
       color: $color-main;
     }
   }
-  &__left {
-    padding-left: 20px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 130%;
   }
-}
