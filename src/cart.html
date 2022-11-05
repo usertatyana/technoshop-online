@@ -59,7 +59,7 @@
 
         <div class="container cart__container">
             <section class="cart-goods">
-                <h3 class="cart__title">Корзина</h3>
+                <h3 class="cart__title cart-goods__title">Корзина</h3>
                 <ul class="cart-goods__list">
                     <li class="cart-goods__item item">
                         <img src="img/Монитор.jpg" alt="" class="item__img">
@@ -146,19 +146,19 @@
 
                 <div class="total__wrapper">
                     <ul class="total__table">
-                        <li class="total__row total__row-header">
+                        <li class="total__row total__row_header">
                             <span>Итого</span>
                             <span>41 222 ₽</span>
                         </li>
-                        <li class="total__row total__row-grey">
+                        <li class="total__row total__row_grey">
                             <span>Товары, 3 шт.</span>
                             <span>41 222 ₽</span>
                         </li>
-                        <li class="total__row total__row-grey">
+                        <li class="total__row total__row_grey">
                             <span>Скидка</span>
                             <span>0 ₽</span>
                         </li>
-                        <li class="total__row total__row-grey">
+                        <li class="total__row total__row_grey total__row_gap">
                             <span>Доставка</span>
                             <span>0 ₽</span>
                         </li>
@@ -171,26 +171,25 @@
                             <span>Картой</span>
                         </li>
                     </ul>
+
+                    <div class="total__order">
+                        <button class="total__submit">Оформить заказ</button>
+
+                        <label class="total__agree">
+                            <input type="checkbox" name="agree" required>
+
+                            <span>Согласен с <a class="total__agree_link" href="">условиями</a> правил пользования торговой площадкой и&nbsp; правилами возврата</span>
+                        </label>
+                    </div>
                 </div>
-
-                <div class="total__order">
-                    <button class="total__submit">Оформить заказ</button>
-
-                    <label class="total__agree">
-                        <input type="checkbox" name="agree">
-
-                        <span>Согласен с <a class="total__agree-link" href="">условиями</a> правил пользования торговой площадкой и&nbsp; правилами возврата</span>
-                    </label>
-                </div>
-
             </section>
 
             <section class="cart__address address">
-                <h3 class="cart__title">Адрес доставки</h3>
+                <h3 class="cart__title address__title">Адрес доставки</h3>
 
                 <form class="address__form">
                     <label>
-                        <select class="address__item address__item-select" name="city">
+                        <select class="address__item address__item_select" name="city">
                             <option value="" disabled selected>Город</option>
                             <option value="Moscow">Москва</option>
                             <option value="St. Petersburg">Санкт-Петербург</option>
@@ -209,13 +208,15 @@
 
                         <label><input class="address__item" type="text" placeholder="Индекс"></label>
 
-                    <button class="address__item address__item-btn">Сохранить</button>
+                    <button class="address__item address__item_btn">Сохранить</button>
                     
                     <label class="address__label-save">
                         <input type="checkbox" name="save-address">Запомнить этот адрес
                     </label>
                 </form>
             </section>
+
+
         </div>
     </section>
 </main>
