@@ -1,5 +1,7 @@
 .card {
   margin-bottom: 70px;
+  position: relative;
+  min-height: 80vh;
 
   &__details {
     display: flex;
@@ -81,6 +83,7 @@
     line-height: 41px;
     margin-right: auto;
   }
+
   &__add-cart {
     width: 352px;
     height: 57px;
@@ -91,11 +94,13 @@
     background-color: $color-main;
     border: none;
   }
+
   &__params-list {
     font-weight: 500;
     font-size: 18px;
     line-height: 140%;
   }
+
   &__params-item {
     display: grid;
     grid-template-columns: 210px max-content;
@@ -105,15 +110,31 @@
   &__description {
     max-width: 1450px;
   }
+
   &__description-title {
     font-weight: 700;
     font-size: 26px;
     line-height: 32px;
     margin-bottom: 20px;
   }
+
   &__description-text {
     font-weight: 500;
     font-size: 18px;
     line-height: 140%;
+  }
+  &__preload {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    background-color: $color-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transform: rotate(0);
+      animation: rotation 1s infinite linear;
+    }
   }
 }
