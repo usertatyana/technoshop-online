@@ -13,12 +13,11 @@ import {renderItem} from "./modules/renderItem";
 
 try {
   const goodsList = document.querySelector('.goods__list');
-
   if (goodsList) {
   const paginationWrapper = document.querySelector('.pagination');
 
-  const pageUrl = new URL(location);
-  const page = +pageUrl.searchParams.get('page') || 1;
+  const pageURL = new URL(location);
+  const page = +pageURL.searchParams.get('page') || 1;
 
   goodsList.innerHTML = `
     <div class="goods__preload">
@@ -29,9 +28,9 @@ try {
  `;
 
   getGoods({page}).then(({goods, pages, page}) => {
-    renderGoods(goodsList, goods, 'goods__item');
+    renderGoods(goodsList, goods);
     startPagination(paginationWrapper, pages, page);
-  });
+  })
   }
 
 } catch (e) {
@@ -42,8 +41,8 @@ try {
   const card = document.querySelector('.card');
 
   if (card) {
-    const pageUrl = new URL(location);
-    const id = +pageUrl.searchParams.get('id');
+    const pageURL = new URL(location);
+    const id = +pageURL.searchParams.get('id');
 
     const preload = document.createElement('div');
     preload.className = 'card__preload';

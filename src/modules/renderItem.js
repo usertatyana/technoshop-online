@@ -22,7 +22,7 @@ const createCardImageThumbSlider = (smallImage) => {
   const cardImageSlider = document.createElement('ul');
   cardImageSlider.className = 'swiper-wrapper';
 
-  const cardImageSlides = largeImages.map(url => {
+  const cardImageSlides = smallImage.map(url => {
     const li = document.createElement('li');
     li.className = 'swiper-slide';
     const button = document.createElement('button');
@@ -45,6 +45,6 @@ export const renderItem = item => {
     cardImage.append(createCardImageSlider(item.images.large));
 
     const cardSliderThumb = document.querySelector('.card__slider-thumb');
-    cardSliderThumb.append(createCardImageThumbSlider(item.image.small));
+    cardSliderThumb.append(createCardImageThumbSlider(item.images.small));
 
 };
