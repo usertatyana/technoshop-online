@@ -1,4 +1,5 @@
 import {APP_URI} from "./var";
+import Swiper, {Scrollbar, Thumbs} from "swiper";
 
 const createCardImageSlider = (largeImages) => {
   const cardImageSlider = document.createElement('ul');
@@ -45,6 +46,28 @@ export const renderItem = item => {
     cardImage.append(createCardImageSlider(item.images.large));
 
     const cardSliderThumb = document.querySelector('.card__slider-thumb');
-    cardSliderThumb.append(createCardImageThumbSlider(item.images.small));
+    const swiperScrollbar = document.createElement('div');
+    swiperScrollbar.className = 'swiper-scrollbar';
+    cardSliderThumb.append(createCardImageThumbSlider(item.images.small), swiperScrollbar);
+
+  const thumbSwiper = new Swiper ('.card__slider-thumb', {
+    spaceBetween: 44,
+    slidesPerView: 3,
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+    },
+    modules: [Scrollbar]
+  });
+
+  new Swiper('.card__image', {
+    spaceBetween: 10,
+    slidesPerView: 1,
+    thumbs: {
+      swiper: thumbSwiper,
+      slideThumbActiveClass: 'card__thumb-btn_active',
+    },
+    modules: [Thumbs]
+  });
 
 };

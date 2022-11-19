@@ -9,5 +9,7 @@ export const getGoods = ({page}) => {
 
 };
 
-export const getGoodsItem = (id) => fetch(`${APP_URI}api/goods/${id}`).then(response => response.json())
+export const getGoodsItem = (id) =>
+  fetch(`${APP_URI}api/goods/${id}`)
+    .then(response => response.json())
 
