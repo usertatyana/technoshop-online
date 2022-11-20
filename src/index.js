@@ -58,13 +58,16 @@ try {
     getGoodsItem(id).then(item => {
       renderItem(item);
       preload.remove();
+      return item.category;
+    }).then(category => {
+      return getGoods({category})
+    }).then(data => {
+      console.log(data);
     })
   }
 } catch (e) {
     console.warn(e);
 }
-
-
 
 new Swiper('.recommended__carousel',{
     spaceBetween: 30,

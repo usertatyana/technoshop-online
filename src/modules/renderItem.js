@@ -37,7 +37,39 @@ const createCardImageThumbSlider = (smallImage) => {
 
   cardImageSlider.append(...cardImageSlides);
   return cardImageSlider;
-}
+};
+
+const createParams = (params) => {
+  const list = [];
+
+  for (const key in params) {
+    const li = document.createElement('li');
+    li.className = 'card__params-item';
+
+    li.innerHTML = `
+      <span>${key}:</span>
+      <span>${params[key]}</span>
+    `;
+
+    list.push(li);
+  }
+
+  return list;
+};
+
+const createDescription = (descriptions) => {
+  const list = [];
+
+  for (const description of descriptions) {
+    const p = document.createElement('p');
+
+    p.innerHTML = description;
+
+    list.push(p);
+  }
+
+  return list;
+};
 
 export const renderItem = item => {
     console.log(item);
@@ -50,17 +82,37 @@ export const renderItem = item => {
     swiperScrollbar.className = 'swiper-scrollbar';
     cardSliderThumb.append(createCardImageThumbSlider(item.images.small), swiperScrollbar);
 
-  const thumbSwiper = new Swiper ('.card__slider-thumb', {
+  const cardTitle = document.querySelector('.card__title');
+  cardTitle.textContent = item.title;
+
+  const cardVendorCode = document.querySelector('.card__vendor-code');
+  cardVendorCode.textContent = `Артикуль: ${item.id}`;
+
+  const cardPrice = document.querySelector('.card__price');
+  cardPrice.textContent = new Intl.NumberFormat('ru-RU', {
+    style: 'currency', currency: 'RUB', maximumFractionDigits: 0,
+  }).format(item.price);
+
+  const cardAddCart = document.querySelector('.card__add-cart');
+  cardAddCart.dataset.idGoods = item.id;
+
+  const cardParamsList = document.querySelector('.card__params-list');
+  cardParamsList.append(...createParams(item.characteristic));
+
+  const cardDescriptionText = document.querySelector('.card__description-title');
+  cardDescriptionText.append(...createDescription(item.description));
+
+  const thumbSwiper = new Swiper (cardSliderThumb, {
     spaceBetween: 44,
     slidesPerView: 3,
     scrollbar: {
-      el: '.swiper-scrollbar',
+      el: swiperScrollbar,
       draggable: true,
     },
     modules: [Scrollbar]
   });
 
-  new Swiper('.card__image', {
+  new Swiper(cardImage, {
     spaceBetween: 10,
     slidesPerView: 1,
     thumbs: {
