@@ -3,6 +3,11 @@
     border: 1px solid $color-grey;
     border-radius: 20px;
     padding: 40px 20px;
+
+    @include laptop {
+      max-width: 494px;
+      margin: 0 auto;
+    }
   }
 
   &__table {
@@ -45,6 +50,12 @@
     display: flex;
     gap: 17px;
     justify-content: space-between;
+
+    @include desktop {
+      flex-wrap: wrap;
+      max-width: 352px;
+      margin: 0 auto;
+    }
   }
 
   &__submit {
