@@ -1,4 +1,15 @@
 .total {
+  @include mobile {
+    position: relative;
+    left: -10px;
+    width: 320px;
+    border-width: 1px 0;
+    border-color: $color-grey;
+    border-style: solid;
+    border-radius: 0;
+    padding: 15px 10px 25px;
+  }
+
   &__wrapper {
     border: 1px solid $color-grey;
     border-radius: 20px;
@@ -8,10 +19,20 @@
       max-width: 494px;
       margin: 0 auto;
     }
+
+    @include mobile {
+      border-width: 0;
+      padding: 0;
+    }
+
   }
 
   &__table {
     margin-bottom: 50px;
+
+    @include mobile {
+      margin-bottom: 25px;
+    }
   }
 
   &__row {
@@ -24,6 +45,11 @@
     padding-left: 10px;
     margin-bottom: 20px;
 
+    @include mobile {
+      margin-bottom: 10px;
+      padding: 0;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -35,6 +61,16 @@
       padding-bottom: 9px;
       border-bottom: 1px solid $color-grey-light;
       margin-bottom: 27px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      @include mobile {
+        position: relative;
+        left: -10px;
+        width: 320px;
+        padding-bottom: 4px;
+        margin-bottom: 14px;
+      }
     }
 
     &_grey {
@@ -43,6 +79,10 @@
 
     &_gap {
       margin-bottom: 40px;
+
+      @include mobile {
+        margin-bottom: 25px;
+      }
     }
   }
 
@@ -67,6 +107,11 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__agree {
@@ -80,6 +125,6 @@
     color: $color-grey;
   }
   &__agree-link {
-
+    color: $color-primary;
   }
 }
