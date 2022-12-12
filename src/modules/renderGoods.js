@@ -3,6 +3,10 @@ import {APP_URI} from "./var";
 export const renderGoods = (wrapper, goods) => {
   wrapper.textContent = '';
 
+  if (!goods.length) {
+    wrapper.innerHTML = '<h2>Нет товара по вашему запросу</h2>'
+  }
+
   const cards = goods.map(item => {
     const li = document.createElement('li');
     li.className = 'goods__item';

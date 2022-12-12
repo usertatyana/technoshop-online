@@ -1,17 +1,26 @@
 import {APP_URI} from "./var";
 
-export const getGoods = ({page, category}) => {
-  const url = new URL(`${APP_URI}api/goods`)
+export const getGoods = () => {
 
-  if (page) url.searchParams.append(`page`, page);
+  const pageURL = new URL(location);
 
-  if (category) url.searchParams.append('category', category);
+  const url = new URL(`${APP_URI}api/goods`);
+
+  for (const [name, value] of pageURL.searchParams.entries()) {
+    url.searchParams.set(name, value)
+  }
+
 
   return fetch(url).then(response => response.json())
-
 };
 
 export const getGoodsItem = (id) =>
   fetch(`${APP_URI}api/goods/${id}`)
     .then(response => response.json())
+
+export const getCategory = () =>
+  fetch(`${APP_URI}api/category`)
+    .then(response => response.json())
+
+
 
