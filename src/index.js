@@ -11,6 +11,7 @@ import {getGoods, getGoodsItem} from "./modules/goodsService";
 import {renderGoods} from "./modules/renderGoods";
 import {renderItem} from "./modules/renderItem";
 import {filter} from "./modules/filter";
+import {cartControl} from "./modules/cartControl";
 
 try {
   const goodsList = document.querySelector('.goods__list');
@@ -30,6 +31,11 @@ try {
  `;
 
   getGoods().then(({goods, pages, page}) => {
+    cartControl({
+      wrapper: goodsList,
+      classAdd: 'goods-item__to-cart',
+      classDelete:  'goods-item__to-cart-remove',
+    })
     renderGoods(goodsList, goods);
     startPagination(paginationWrapper, pages, page);
   })
