@@ -12,6 +12,9 @@ import {renderGoods} from "./modules/renderGoods";
 import {renderItem} from "./modules/renderItem";
 import {filter} from "./modules/filter";
 import {cartControl} from "./modules/cartControl";
+import {serviceCounter} from "./modules/counterControl";
+import {searchWithoutReload} from "./modules/search";
+
 
 try {
   const goodsList = document.querySelector('.goods__list');
@@ -20,6 +23,7 @@ try {
 
     const paginationWrapper = document.querySelector('.pagination');
 
+    searchWithoutReload(goodsList, paginationWrapper);
     filter(goodsList, paginationWrapper);
 
     goodsList.innerHTML = `
@@ -63,8 +67,19 @@ try {
 
     card.append(preload);
 
+    serviceCounter({
+      selectorWrapper: '.card__count',
+      selectorNumber: '.card__number',
+      selectorDec: '.card__btn_dec',
+      selectorInc: '.card__btn_inc',
+    })
+
     getGoodsItem(id).then(item => {
       renderItem(item);
+      cartControl({
+        classAdd: 'card__add-cart',
+        classCount: 'card__number',
+      })
       preload.remove();
       return item.category;
     }).then(category => {

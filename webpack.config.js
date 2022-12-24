@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Critical = require('critical-css-webpack-plugin');
+const {Plugin} = require("@babel/core");
 
 const PAGES = ['index', 'cart', 'card'];
 
@@ -9,6 +10,20 @@ const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
+
+const plugins =  [
+  ...PAGES.map(page => new HtmlWebpackPlugin({
+  template: path.resolve(__dirname, 'src', `${page}.html`),
+  filename: `./${page}.html`
+})),
+  new MiniCssExtractPlugin({
+    filename: '[name].[contenthash].css',
+  }),
+];
+
+if (!devMode) {
+  plugins.push(new Critical())
+}
 
 module.exports = {
   mode,
@@ -26,16 +41,7 @@ module.exports = {
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]'
   },
-  plugins: [
-      ...PAGES.map(page => new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src', `${page}.html`),
-        filename: `./${page}.html`
-      })),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
-    new Critical(),
-  ],
+  plugins,
   module: {
     rules: [
       {
