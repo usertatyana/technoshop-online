@@ -24,10 +24,11 @@ export const renderGoods = (wrapper, goods) => {
             </a>
 
             <div class="goods-item__buy">
-               <p class="goods-item__price">${item.price}</p>
+               <p class="goods-item__price">${item.price} ₽</p>
                <button class="goods-item__to-cart" data-id-goods="${item.id}">В корзину</button>
              </div>
-     </article>`;
+     </article>
+`;
 
     return li;
   });

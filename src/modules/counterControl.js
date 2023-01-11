@@ -1,8 +1,17 @@
-export const serviceCounter = ({ selectorWrapper, selectorNumber, selectorDec, selectorInc }) => {
-    const wrapCounter = document.querySelector(selectorWrapper);
-    const numberElem = document.querySelector(selectorNumber);
+export const serviceCounter = ({ wrapper, number, selectorDec, selectorInc }) => {
+  let wrapCounter;
+  let numberElem;
+  if (typeof wrapper === 'string'){
+    const wrapCounter = document.querySelector(wrapper);
+    wrapCounter.querySelector(number);
+  }else {
+    wrapCounter = wrapper;
+    numberElem = number;
+  }
+
 
     wrapCounter.addEventListener('click', (e) => {
+      console.log(wrapCounter);
       const target = e.targets;
 
       if (target.closest(selectorDec)) {

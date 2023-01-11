@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Critical = require('critical-css-webpack-plugin');
-const {Plugin} = require("@babel/core");
+const {logPlugin} = require("@babel/core");
 
 const PAGES = ['index', 'cart', 'card'];
 

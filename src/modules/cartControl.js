@@ -1,3 +1,6 @@
+import {APP_URI} from "./var";
+import {serviceCounter} from "./counterControl";
+
 const addToCart = (id, count = 1) => {
   const cartGoods = localStorage.getItem('cart-ts') ?
     JSON.parse(localStorage.getItem('cart-ts')) :
@@ -65,7 +68,7 @@ export const cartControl = ({wrapper, classAdd, classDelete, classCount} = {}) =
 
       if (target.closest(`.${classDelete}`)) {
         removeToCart(id);
-      } else if (target.closest(`.${classAdd}`)) {
+      } else if (!target.closest(`.${classAdd}`)) {
         addToCart(id);
       }
 
@@ -97,7 +100,7 @@ export const renderCart = (goods, cartGoods) => {
 
     const img = new Image(200, 200);
     img.className = "item__img";
-    img.src = `${API_URI}${item.images.present}`;
+    img.src = `${APP_URI}${item.images.present}`;
     img.alt = item.title;
 
     const detail = document.createElement('div');
@@ -149,7 +152,7 @@ export const renderCart = (goods, cartGoods) => {
     `;
 
     detail.append(title, vendor);
-    control.append(count, price, remove)
+    control.append(count, price, remove);
     li.append(img, detail, control);
 
 

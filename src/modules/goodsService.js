@@ -10,7 +10,6 @@ export const getGoods = () => {
     url.searchParams.set(name, value)
   }
 
-
   return fetch(url).then(response => response.json())
 };
 
@@ -21,6 +20,10 @@ export const getGoodsItem = (id) =>
 export const getCategory = () =>
   fetch(`${APP_URI}api/category`)
     .then(response => response.json())
+
+export const getGoodsList = list =>
+  fetch(`${APP_URI}api/goods/?list=${list}`)
+    .then(response => response.json());
 
 
 

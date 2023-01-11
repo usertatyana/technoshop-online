@@ -15,7 +15,7 @@ const toggleFilter = (filter, catalogFilterBtn, filterTitle) => {
   });
 }
 
-export const filter = (goodsList, paginationWrapper, ) => {
+export const filter = (goodsList, paginationWrapper) => {
   const filter = document.querySelector('.filter');
   const catalogFilterBtn = document.querySelector('.catalog__filter-btn');
   const category = document.querySelector(`#category`);

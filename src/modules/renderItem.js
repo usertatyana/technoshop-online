@@ -18,12 +18,11 @@ const createCardImageSlider = (largeImages) => {
   return cardImageSlider;
 }
 
-const createCardImageThumbSlider = (smallImage) => {
-
+const createCardImageThumbSlider = (smallImages) => {
   const cardImageSlider = document.createElement('ul');
   cardImageSlider.className = 'swiper-wrapper';
 
-  const cardImageSlides = smallImage.map(url => {
+  const cardImageSlides = smallImages.map(url => {
     const li = document.createElement('li');
     li.className = 'swiper-slide';
     const button = document.createElement('button');
@@ -62,9 +61,7 @@ const createDescription = (descriptions) => {
 
   for (const description of descriptions) {
     const p = document.createElement('p');
-
     p.innerHTML = description;
-
     list.push(p);
   }
 
@@ -99,7 +96,7 @@ export const renderItem = item => {
   const cardParamsList = document.querySelector('.card__params-list');
   cardParamsList.append(...createParams(item.characteristic));
 
-  const cardDescriptionText = document.querySelector('.card__description-title');
+  const cardDescriptionText = document.querySelector('.card__description-text');
   cardDescriptionText.append(...createDescription(item.description));
 
   const thumbSwiper = new Swiper (cardSliderThumb, {

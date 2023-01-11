@@ -1,4 +1,5 @@
 const overlay = document.createElement('div');
+export default overlay;
 
 overlay.style.cssText = `
   position: fixed;
